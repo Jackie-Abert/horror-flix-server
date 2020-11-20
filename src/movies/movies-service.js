@@ -1,4 +1,4 @@
-const moviesService = {
+const movieService = {
     getAllMovies(db, user_id) {
         return db
         .from('movie_table AS m')
@@ -11,7 +11,12 @@ const moviesService = {
         .select('*')
         .where({'m.id':id, user_id})
         .first();
-    }
+    },
+    patchRating(db, id, rating) {
+        return db('movie_table AS m')
+        .where('m.id', id)
+        .update(rating)
+    },
 
 
 
@@ -21,4 +26,4 @@ const moviesService = {
 
 }
 
-module.exports = moviesService;
+module.exports = movieService;
