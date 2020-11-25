@@ -17,13 +17,29 @@ const movieService = {
         .where('m.id', id)
         .update(rating)
     },
-
-
-
-//patch where only a rating can be updated
-//post where a whole new movie is added
-//delete on specific movies the user added a possibility or maybe just a patch
-
+    postNewMovie(db, data) {
+        return db
+        .insert(data)
+        .into('movie_table')
+        .returning('*')
+        .then(rows => {
+            return rows[0]
+        })
+    },
+    getAllTitles(db, user_id){
+        return db
+        .from('movie_table AS m')
+        .select("title")
+        .where('m.user_id', user_id)
+        .then(rows => {
+            return rows
+        })
+    },
+    deleteMovie(db, id){
+        return db('movie_table')
+        .where({id})
+        .delete()
+    }
 }
 
 module.exports = movieService;
