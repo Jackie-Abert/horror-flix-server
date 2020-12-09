@@ -5,12 +5,12 @@ TRUNCATE
     users
     RESTART IDENTITY CASCADE;
 
-INSERT INTO users (user_name, password)
+INSERT INTO users (user_name, email, password)
 VALUES
 -- password = "pass"
-('admin', '$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG'),
-('jackie', '$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG'),
-('laila', '$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG');
+('admin', 'admin@gmail.com','$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG'),
+('jackie', 'jackie@gmail.com','$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG'),
+('laila', 'laila@gmail.com','$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG');
 
 
 INSERT INTO movie_table (title, genre, rating, watched, user_id)

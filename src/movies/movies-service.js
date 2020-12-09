@@ -35,6 +35,20 @@ const movieService = {
             return rows
         })
     },
+    custom(value, {req}){
+        return new Promise((resolve, reject) => {
+         db.query(`SELECT user_id FROM users WHERE title = ?`, req.body.title,(err,res) => 
+      {
+        if(err) {
+          reject(new Error('Server Error'))
+        }
+        if(res.length > 0) {
+          reject(new Error('E-mail already in use'))
+        }
+        resolve(true)
+        });
+      });
+    },
     deleteMovie(db, id){
         return db('movie_table')
         .where({id})
